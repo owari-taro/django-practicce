@@ -2,18 +2,22 @@
 
 <html>
     <head>
-        <title>django blog</title>        
-        <link rel="stylesheet" href="{% static  'css/base.css' %}">
+        <title>Django blog</title>    
+        <link rel="sytlesheet" href="{% static 'css/base.css' %}">
     </head>
     <body>
         <header>
-            <h1><a href="{%  url 'home' %}">django blog</a></h1>
+            <div class="nav-left">
+                <h1><a href="{% url 'home' %}">django blog</a></h1>
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'post_new'%}">New Blog Post</a>     
+        </div>
+        
         </header>
-    <div>
-        {% block content %}
-        {% endblock content %}
-
-    </div>
+        <div>
+            {% block content %}
+            {% endblock content %}        
+        </div>
     </body>
-
 </html>
