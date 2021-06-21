@@ -11,16 +11,18 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+from environs import Env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
+env = Env()
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%^%dxp)!#rm5lh0yrn$b-n5*dg1yo)wg85%kc8sf=v_8&ndt8e'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
+# '%^%dxp)!#rm5lh0yrn$b-n5*dg1yo)wg85%kc8sf=v_8&ndt8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -151,10 +153,7 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
 
-
-
-
-ACCOUNT_USERNAME_REQUIRED=False
-ACCOUNT_AUTHENTICATION_METHOD='email'
-ACCOUNT_EMAIL_REQUIRED=True
-ACCOUNT_UNIQUE_EMAIL=True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
