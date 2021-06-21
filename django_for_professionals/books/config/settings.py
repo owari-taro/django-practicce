@@ -25,9 +25,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # '%^%dxp)!#rm5lh0yrn$b-n5*dg1yo)wg85%kc8sf=v_8&ndt8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
