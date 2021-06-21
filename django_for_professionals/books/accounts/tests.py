@@ -38,12 +38,12 @@ class SignupPageTests(TestCase):
 
     def test_signup_template(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'signup.html')
+        self.assertTemplateUsed(self.response, 'registration/signup.html')
         self.assertContains(self.response, 'signup')
        # self.assertNotContains(self.reponse,'his there i should not be on the page')
 
     def test_sinup_form(self):
-        form = self.reponse.context.get('form')
+        form = self.response.context.get('form')
         self.assertIsInstance(form, CustomUserCreationForm)
         self.assertContains(self.response, 'csrfmiddlewaretoken')
 
