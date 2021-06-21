@@ -37,13 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
     # 3rd parties
     "crispy_forms",
+    'allauth',
+    'allauth.account',
     # local apps
     'accounts',
     'pages'
 
 ]
+
+SITE_ID = 1
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [

@@ -4,10 +4,11 @@
     <h1>homepage</h1>
     {% if user.is_authenticated %}
         Hi,{{user.email}}
+        <p><a href="{% url 'account_logout'%}">log out</a></p>
     {% else %}
     <p> you are not logged in </p>
-    <a href="{% url 'login' %}">login</a>
-    <a href="{% url 'signup' %}">signup</a>
+    <a href="{% url 'account_login' %}">login</a>
+    <a href="{% url 'account_signup' %}">signup</a>
     {% endif %}
 
 
