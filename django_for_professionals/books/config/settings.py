@@ -25,9 +25,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # '%^%dxp)!#rm5lh0yrn$b-n5*dg1yo)wg85%kc8sf=v_8&ndt8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -157,3 +157,4 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
