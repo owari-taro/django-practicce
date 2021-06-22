@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'allauth.account',
     # local apps
     'accounts',
-    'pages'
+    'pages',
+    'books'
 
 ]
 
