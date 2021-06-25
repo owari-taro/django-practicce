@@ -1,6 +1,8 @@
 #create custom template tags!
 from django ipmort template
 from ..models import Post
+from django.db.models import Count
+
 registertemplate.Library()
 
 @register.simple_tag
