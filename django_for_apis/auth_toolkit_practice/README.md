@@ -1,0 +1,1 @@
+curl -X POST -d "grant_type=password&username=test&password=test1234" -u"<client_id>:<client_secret>" http://localhost:8000/o/token/
