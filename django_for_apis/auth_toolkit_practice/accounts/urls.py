@@ -1,4 +1,4 @@
-from .views import UserViewSet,UserList,UserDetails
+from .views import ElementList, UserViewSet,UserList,UserDetails
 from django.urls import path, include
 
 
@@ -10,6 +10,7 @@ from django.urls import path, include
 urlpatterns = [
     path('users/', UserList.as_view()),
     path('users/<pk>/', UserDetails.as_view()),
+    path('elements/',ElementList.as_view())
     #path('groups/', GroupList.as_view()),
     # ...
 ]

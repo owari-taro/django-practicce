@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.contrib.auth.models import Group
 from django.contrib import admin
 from django.contrib.auth import get_user_model
+from .models import Element
 User = get_user_model()
 admin.autodiscover()
 
@@ -15,6 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('username', 'email', "first_name", "last_name")
 
+class ElementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Element
+        fields=("name","comment","old",)
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,15 +27,3 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = ("name", )
 
 # Create the API views
-
-
-class UserList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UserDetails(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
