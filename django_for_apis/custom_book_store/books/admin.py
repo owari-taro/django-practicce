@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db.models.fields.related import create_many_to_many_intermediary_model
-from .models import Book, Comment
+from .models import Book, Comment,Publisher
 # Register your models here.
 
 
@@ -14,4 +14,5 @@ class BookAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Book, BookAdmin)
+admin.site.register(Publisher)
 # admin.site.register(Comment)
