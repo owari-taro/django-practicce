@@ -8,7 +8,7 @@ book1.commentがNoneになってbook2.commentだけに結びつくようにな�
 
 
 ・Forienkeyを指定した時テーブル構成
-forienkeyを競って下側のテーブルにbook_idというキーが自動が作られる１
+forienkeyを競って下側のテーブルにbook_idというキーが自動が作られる(Forienkey unique=Trueのとき)
 
 ## check
 ```
@@ -34,9 +34,23 @@ save method
 ```
 import sqlite3
 con=sqlite3.connect("db.sqlite3")
+def dict_factory(cursor, row):
+   d = {}
+   for idx, col in enumerate(cursor.description):
+       d[col[0]] = row[idx]
+   return d
+
+
 con.row_factory = dict_factory
 cur=con.cursor()
 cur.execute("select * from sqlite_master where type='table'")
+```
+
+
+```
+>>> from books.models import *
+>>> from books.serializer import * 
+>>> Book
 ```
 
 select * from sqlite_master;
