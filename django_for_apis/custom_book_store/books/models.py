@@ -61,7 +61,7 @@ class Comment(models.Model):
              using: Optional[str] = False, update_fields: Optional[Iterable[str]] = None):
         print("save method")
         if self.comment=="":
-            raise Exception()
+            raise Exception("empty string isnt allowed")
         if self.book.comments.count() > CommentLimit:
             raise TooManyRelationException("")
         print(self.book.comments.count())
