@@ -1,9 +1,10 @@
 from django.db import models
+
 # Create your models here.
 from django.contrib.auth import get_user_model
 from django.db.models.fields import related
 from typing import Optional, Iterable
-
+from django.utils import timezone
 CommentLimit = 3
 
 
@@ -60,10 +61,9 @@ class Comment(models.Model):
     def save(self, force_insert: bool = False, force_update: bool = False,
              using: Optional[str] = False, update_fields: Optional[Iterable[str]] = None):
         print("save method")
-        if self.comment=="":
+        if len(self.comment) ==0:
             raise Exception("empty string isnt allowed")
         if self.book.comments.count() > CommentLimit:
             raise TooManyRelationException("")
-        print(self.book.comments.count())
 
         super(Comment, self).save()

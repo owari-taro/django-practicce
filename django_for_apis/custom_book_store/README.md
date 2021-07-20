@@ -48,9 +48,18 @@ cur.execute("select * from sqlite_master where type='table'")
 
 
 ```
->>> from books.models import *
->>> from books.serializer import * 
->>> Book
+
+
+from books.models import *
+from books.serializer import *
+
+Book.objects.all()
+
+books=Book.objects.all()
+books[0]
+b0=books[0]
+BookSerializer(b0).data
+
 ```
 
 select * from sqlite_master;
