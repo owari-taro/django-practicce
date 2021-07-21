@@ -29,7 +29,7 @@ setupメソッドが長くなって読みにくくなるとかを防ぐのに使
             "comment": "hoge",
             #ForienKeyの指定はPKで行える
             "book":"1",
-            #auto_nowの場合も指定する必要あり
+            #DateTimeはauto_nowの場合も指定する必要あり
             "created_at": "2021-07-16T17:41:28+00:00",
             "updated_at": "2021-07-16T17:41:28+00:00",
             "author": "1"

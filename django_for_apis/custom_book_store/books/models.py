@@ -65,6 +65,10 @@ class Comment(models.Model):
 class Award(models.Model):
     # example model for testing manytomany field
     name = models.CharField(max_length=250)
-    books = models.ManyToManyField(Book, null=True)
-    created_at = models.DateTimeField(null=True, auto_now_add == True)
+    books = models.ManyToManyField(Book, null=True,related_name="awards"
+    )
+    created_at = models.DateTimeField(null=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, auto_now=True)
+
+    def __str__(self):
+        return self.name
