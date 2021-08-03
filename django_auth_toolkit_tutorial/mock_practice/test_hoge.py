@@ -4,15 +4,21 @@ from hoge import Something, Hoge, URL
 from hogehoge import HogeHoge
 
 # https://stackoverflow.com/questions/38579535/how-to-supply-a-mock-class-method-for-python-unit-test
-#https://auth0.com/blog/mocking-api-calls-in-python/
+# https://auth0.com/blog/mocking-api-calls-in-python/
+
 
 class Test(unittest.TestCase):
+
+    @patch.object(Something, "post")
     @patch.object(Something, "get")
-    def test_something(self, fake_get):
+    #decorate are applied from bottom-up
+    def test_something(self,  fake_get, fake_post):
         fake_get.return_value = 1234
+        fake_post.return_value = 321
         sth = Something()
         print(sth)
         self.assertEqual(sth.get(), 1234)
+        self.assertEqual(sth.post(), 321)
 
     @patch.object(Hoge, "get")
     def test_Hoge(self, fake_get):
@@ -33,3 +39,9 @@ class Test(unittest.TestCase):
         res = hoge.get()
         mock_get.assert_called_with(URL)
         self.assertEqual(res, {"fake-request!"})
+
+
+try:
+    1/0
+except Exception as err:
+    print(str(err))
