@@ -5,8 +5,16 @@ name = "pypi"
 
 [packages]
 django = "*"
+psycopg = "*"
+psycopg2-binary = "*"
+pytest-django = "*"
+requests = "*"
+autopep8 = "*"
 
 [dev-packages]
+black = "*"
+flake8 = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.10"
