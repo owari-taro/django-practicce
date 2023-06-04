@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="welcome">
+    <h1 class="title">ユーザー管理ページ</h1>
+    <a class="btn btn-primary" href="{% url 'accounts_create' %}">ユーザー作成</a>
+
+</div>
+
+{% if users %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>origin_group</th>
+        <th>roles</th>
+        <th>link</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <th>{{ user.id }}</th>
+        <th>{{ user.username }}</th>
+        <th>{{user.origin_group.group_id}}</th>
+        <th>{{user.show_roles}}</th>
+        <th> <a href="{% url 'accounts_edit' user.pk %}" >edit</a></li></th>
+        <th> <a href="" >reset password</a></li></th>
+        <td><a type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#delete-Modal-{{ user.pk }}">削除</a></td>
+        {% include 'accounts/delete.html' %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div>
+    <th><a href="{% url 'accounts_csv' %}" class="btn btn-primary">csv出力</a></th>
+    <th><a href="{% url 'accounts_inquiry' %}" class="btn btn-primary">問い合わせ</a></th>
+  </div>
+{% else %}
+<p>ユーザーは登録されれていません</p>
+{% endif %}
+{% endblock %}
