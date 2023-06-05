@@ -61,10 +61,10 @@ def csv_export(request):
 
     writer = csv.writer(response)
     users = CustomUser.objects.all()
-    writer.writerow(["id", "username", "origin_group", "origin", "role"])
+    writer.writerow(["id", "username", "origin_group", "role","created_at","updated_at"])
     for user in users:
         writer.writerow(
-            [user.id, user.username, user.origin_group.group_id, user.show_roles()]
+            [user.id, user.username, user.origin_group.group_id, user.show_roles(),user.created_at.strftime('%Y/%m/%d %H:%M:%S.%f'),user.updated_at.strftime('%Y/%m/%d %H:%M:%S.%f')]
         )
     return response
 

@@ -31,7 +31,7 @@ class CustomUser(AbstractUser):
         CustomGroup, null=True, on_delete=models.CASCADE, related_name="users"
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    updatedat_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     roles=models.ManyToManyField(Role,null=True,blank=True)
    
     def show_roles(self):

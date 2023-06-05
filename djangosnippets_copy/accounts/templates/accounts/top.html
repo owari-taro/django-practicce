@@ -26,8 +26,8 @@
         <th>{{ user.username }}</th>
         <th>{{user.origin_group.group_id}}</th>
         <th>{{user.show_roles}}</th>
-        <th> <a href="{% url 'accounts_edit' user.pk %}" >edit</a></li></th>
-        <th> <a href="" >reset password</a></li></th>
+        <th> <a href="{% url 'accounts_edit' user.pk %}" >編集</a></li></th>
+        <th> <a href="" >パスワードリセット</a></li></th>
         <td><a type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#delete-Modal-{{ user.pk }}">削除</a></td>
         {% include 'accounts/delete.html' %}
     </tr>
