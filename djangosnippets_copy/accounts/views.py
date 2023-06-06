@@ -6,15 +6,32 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from accounts.models import CustomGroup, CustomUser
-from accounts.forms import UserForm, InquiryForm, UserCreationForm
+from accounts.forms import UserForm, InquiryForm, UserCreationForm, ResetForm
 from django.views.generic import ListView, DeleteView
 from django.urls import reverse_lazy
 import csv
 import urllib
 
 
+def reset(request, user_id):
+    user = get_object_or_404(CustomUser, pk=user_id)
+    if request.method == "POST":
+        form = ResetForm(request.POST)
+
+        if form.is_valid():
+            password = form.cleaned_data["password"]
+            user.set_password(password)
+            print(user.username)
+            print(password)
+            user.save()
+            return redirect("accounts_top")
+    else:
+        form = ResetForm()
+    return render(request, "accounts/reset.html", {"form": form})
+
+
 def top(request):
-    users = CustomUser.objects.all()
+    users = CustomUser.objects.filter(origin_group=request.user.origin_group)
     print(users)
     context = {"users": users}
     return render(request, "accounts/top.html", context)
@@ -26,6 +43,7 @@ def edit(request, user_id):
         form = UserForm(request.POST, instance=user)
         if form.is_valid():
             obj = form.save()
+
             obj.save()
             # form.save_m2m()   #ここがキーポイント
             return redirect("accounts_top")
@@ -81,7 +99,9 @@ def csv_export(request):
 
 def create_user(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(
+            request.POST, group_id=request.user.origin_group.group_id
+        )
         if form.is_valid():
             obj = form.save(commit=False)
             print(obj)
@@ -89,5 +109,5 @@ def create_user(request):
             form.save_m2m()
             return redirect("accounts_top")
 
-    form = UserCreationForm()
+    form = UserCreationForm(group_id=request.user.origin_group.group_id)
     return render(request, "accounts/user_create.html", {"form": form})

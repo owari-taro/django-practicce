@@ -1,17 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Snippet
+from .models import Snippet,Comment
 
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from snippets.forms import SnippetForm
+from snippets.forms import SnippetForm,CommentForm
 
 
 def top(request):
     snippet = Snippet.objects.all()
-    context = {"snippets": snippet}
+    comments=Comment.objects.all()
+    form = CommentForm
+    context = {"snippets": snippet,"comments":comments,"form":form}
     return render(request, "snippets/top.html", context)
 
 

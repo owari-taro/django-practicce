@@ -26,6 +26,32 @@
     {% endfor %}
     </tbody>
 </table>
+
+
+<div style="border:dotted">
+    <h3 class="comment">コメント一覧</h3>
+    <table>
+        <tbody>
+        {% for comment in comments %}
+        <tr>
+            <th>{{ comment.text }}</th>
+            <th>{{ comment.created_at }}</th>
+            <th>{{ comment.commented_by.username }}</th>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <h4>コメント送信</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">送信</button>
+    </form>
+    
+    
+</div> 
+
 {% else %}
 <p>スニペットはまだ投稿されていません。</p>
 {% endif %}

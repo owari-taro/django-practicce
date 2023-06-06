@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from accounts.models import CustomUser
 
 # Create your models here.
 class Base(models.Model):
@@ -14,3 +14,7 @@ class Snippet(Base):
     code = models.TextField("code", blank=True)
     description = models.TextField("description", blank=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+class Comment(Base):
+    text=models.TextField(blank=False)
+    commented_by=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
