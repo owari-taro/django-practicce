@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+<html>
+
+<body>
+    <h1>フィードバックのアップロード</h1>
+    <p>画像(zip)とフィードバックデータ(zip)をアップロードしてください</p>
+
+    <form enctype="multipart/form-data" method="post" >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="アップロード" %}
+    </form>
+</body>
+
+</html>
+{% endblock %}
+

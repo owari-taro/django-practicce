@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block main %}
+<html>
+
+<body>
+    <h1>画像のアップロード</h1>
+    <p>比較したい新時期画像と旧時期画像のSentinel2画像をzip形式でアップロードしてください。Sentinel2画像は 
+        <a href="https://dataspace.copernicus.eu/browser">CopernicusBrowser</a>
+        からダウンロードダウンロードできます。</p>
+
+    <form enctype="multipart/form-data" method="post" >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="アップロード" %}
+    </form>
+</body>
+
+</html>
+{% endblock %}
+

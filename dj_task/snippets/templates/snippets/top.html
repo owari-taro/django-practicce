@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="welcome">
+    <h1 class="title">タスク一覧</h1>
+    <a class="btn btn-primary" href="{% url 'upload' %}">自動収集済みの衛星画像を探す</a>
+    <a class="btn btn-primary" href="{% url 'upload' %}">画像をアップロードして◎◎する</a>
+
+</div>
+
+{% if tasks %}
+<p>タスクの進捗です</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>タスクID</th>
+        <th>タスク登録日</th>
+        <th>旧画像</th>
+        <th>新画像</th>
+        <th>作成日</th>
+        <th>ダウンロードリンク</th>
+        <th>ダウンロード有効期限</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    {% for task in tasks %}
+    <tr>
+        <th>{{task.id}}</th>
+        <th>{{ task.status }}</th>
+        <th>{{task.new_product}}</th>
+        <th>{{task.old_product}}</th>
+        <th>{{ task.created_at }}</th>
+        {% if task.status == "available" %}
+            <th><a href="{% url 'snippet_detail' task.id %}">{{ task.id }}</a></th>
+            <th>{{task.expired_at}}</th>
+
+        {% else %}
+            <th></th>
+            <th></th>
+
+        {% endif %}
+    </tr>
+    {% endfor %}
+    
+
+
+    </tbody>
+</table>
+{% else %}
+<p>taskはまだ投稿されていません。</p>
+
+
+
+{% endif %}
+{% endblock %}

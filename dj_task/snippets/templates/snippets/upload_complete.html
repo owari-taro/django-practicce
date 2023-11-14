@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="welcome">
+    <h1 class="title">アップロード完了</h1>
+    <h2>task_id:{{ task.id}}</h2>
+    <p>*処理完了までには数時間程度かかる場合があります。タスクの処理状況は<a href={% url 'top' %}>タスク一覧</a>から確認できます。</p>
+
+    <a class="btn btn-primary" href="{% url 'top' %}">タスク一覧へ戻る</a>
+</div>
+
+
+
+{% endblock %}
