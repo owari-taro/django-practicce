@@ -7,7 +7,7 @@ import time
 from .forms import UploadForm,SearchForm
 from django.core.files.uploadedfile import UploadedFile
 # Create your views here.
-from snippets.forms import UploadForm,FeedBackForm
+from snippets.forms import UploadForm,FeedBackForm,TaskSearchForm
 from logging import getLogger
 #from .upload import save_file
 from django.core.files.storage import FileSystemStorage
@@ -18,7 +18,8 @@ from django import forms
 logger=getLogger(__name__)
 def top(request):
     tasks = Task.objects.all()
-    context = {"tasks": tasks}
+    print(tasks)
+    context = {"tasks": tasks,"form":TaskSearchForm()}
     return render(request, "snippets/top.html", context)
 
 

@@ -48,3 +48,6 @@ class SearchForm(forms.Form):
   #  new_quarter=forms.ChoiceField(choices=QuraterChoices,label="四半期")
    # new_quarter=forms.ChoiceField(choices=QuraterChoices,label="四半期")
 
+
+class TaskSearchForm(forms.Form):
+    task_id=forms.CharField(max_length=100)

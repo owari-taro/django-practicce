@@ -139,18 +139,22 @@ LOGGING = {
             "format": "{levelname} {message}",
             "style": "{",
         },
+          "json_fmt": {"()": "pythonjsonlogger.jsonlogger.JsonFormatter",
+                  "json_ensure_ascii": False,
+                  "fmt": "%(asctime)s %(levelname)s %(module)s %(process)d %(thread)d %(message)s"
+                  }
     },
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
             "level":"DEBUG",
-            "formatter":"verbose"
+            "formatter":"json_fmt",#"verbose"
         },
     },
-    #"root": {
-    #    "handlers": ["console"],
-    #    "level": "WARNING",
-    #},
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
     "loggers": {
           "": {
             "handlers": ["console"],

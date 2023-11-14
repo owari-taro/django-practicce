@@ -17,8 +17,12 @@ class Task(Base):
     status=models.CharField(max_length=30,default="wating")
     expired_at=models.DateTimeField(null=True,default=None,blank=True)
     old_product=models.FilePathField(default="")
-    new_product=models.FilePathField(default="")#.ForeignKey(Product,on_delete=models.CASCADE,related_name="tasks_new")
-
+    #old_product_uri=models.CharField(max_length=100)    
+    new_product=models.FilePathField(default="")#.Foreig    nKey(Product,on_delete=models.CASCADE,related_name="tasks_new")
+    #new_product_uri=models.CharField(max_length=100)
+    class Meta:
+        ordering=["-created_at"]
+        indexes=[models.Index(fields=["-created_at"])]
 
 
 class Snippet(Base):

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
 
 {% block main %}
+
+<form method="get" >
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="検索" %}
+</form>
 
 
 {% if tasks %}
