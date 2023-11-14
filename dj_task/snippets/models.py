@@ -63,7 +63,7 @@ class AcqPeriod(Base):
 
     
     def __str__(self):
-        return f"{self.fisical_year} {self.quarter}"
+        return f"{self.fiscal_year} {self.quarter}"
 
 
 

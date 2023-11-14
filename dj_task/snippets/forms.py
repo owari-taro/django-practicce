@@ -42,8 +42,8 @@ class FoodForm(forms.Form):
 
 class SearchForm(forms.Form):
     pref=forms.ModelChoiceField(queryset=Pref.objects.all(),label="都道府県")    
-    new_fiscal_year=forms.ModelChoiceField(queryset=AcqPeriod.objects.all(),label="年度")
-    old_fiscal_year=forms.ModelChoiceField(queryset=AcqPeriod.objects.all(),label="年度")
+    new_fiscal_year=forms.ModelChoiceField(queryset=AcqPeriod.objects.all(),label="年度（新時期）")
+    old_fiscal_year=forms.ModelChoiceField(queryset=AcqPeriod.objects.all(),label="年度(旧時期)")
 
   #  new_quarter=forms.ChoiceField(choices=QuraterChoices,label="四半期")
    # new_quarter=forms.ChoiceField(choices=QuraterChoices,label="四半期")
