@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-ninja = "*"
+psycopg2-binary = "*"
+shapely = "*"
+geopandas = "*"
+django-ninja-extra = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
