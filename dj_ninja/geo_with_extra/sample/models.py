@@ -13,12 +13,12 @@ class Base(models.Model):
 
 
 class Store(Base):
-    polygon = models.PolygonField(null=True)
+    geometry = models.PolygonField(null=True)
     name = models.CharField(max_length=200)
 
     @property
     def geojson(self) -> dict:
-        return json.loads(self.polygon.json)
+        return json.loads(self.geometry.json)
 
 
 class Author(Base):
@@ -29,7 +29,8 @@ class Author(Base):
 class Book(Base):
     name = models.CharField(max_length=100)
     meta = models.JSONField(null=True, encoder=DjangoJSONEncoder)
-    author = models.ForeignKey(Author,on_delete=models.CASCADE,null=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+
     @property
     def author_name(self):
         return self.author.name
