@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import geopandas as gpd
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 追加
     "django.contrib.gis",
-    "sample"
+    "ninja_extra",
+    "sample",
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+#日本のextent
+JP_EXTENT = gpd.read_file("config/jp_extent.geojson").geometry[0]
